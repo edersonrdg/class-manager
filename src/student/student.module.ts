@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import {
   CreateStudentController,
   GetAllStudentsController,
+  DeleteStudentController,
 } from './controllers';
 import { CreateStudentService, GetAllStudentsService } from './services';
 import { Student, StudentSchema } from './student.schema';
@@ -11,7 +12,11 @@ import { Student, StudentSchema } from './student.schema';
   imports: [
     MongooseModule.forFeature([{ name: Student.name, schema: StudentSchema }]),
   ],
-  controllers: [CreateStudentController, GetAllStudentsController],
+  controllers: [
+    CreateStudentController,
+    GetAllStudentsController,
+    DeleteStudentController,
+  ],
   providers: [CreateStudentService, GetAllStudentsService],
 })
 export class StudentModule {}
