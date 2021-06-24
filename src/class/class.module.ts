@@ -6,7 +6,11 @@ import {
   GetAllClassController,
   DeleteClassController,
 } from './controllers';
-import { CreateClassService, GetAllClassService } from './services';
+import {
+  CreateClassService,
+  GetAllClassService,
+  DeleteClassService,
+} from './services';
 
 @Module({
   imports: [
@@ -17,6 +21,6 @@ import { CreateClassService, GetAllClassService } from './services';
     GetAllClassController,
     DeleteClassController,
   ],
-  providers: [CreateClassService, GetAllClassService],
+  providers: [CreateClassService, GetAllClassService, DeleteClassService],
 })
 export class ClassModule {}
