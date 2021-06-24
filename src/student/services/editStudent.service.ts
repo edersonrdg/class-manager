@@ -1,4 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class EditStudentService {}
+export class EditStudentService {
+  async execute(id: string): Promise<void> {
+    return;
+  }
+}
