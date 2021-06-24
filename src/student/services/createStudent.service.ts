@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateStudentDto } from '../dtos/createStudentDTO';
@@ -10,7 +10,16 @@ export class CreateStudentService {
     @InjectModel(Student.name) private studentModel: Model<StudentDocument>,
   ) {}
   async execute(data: CreateStudentDto): Promise<void> {
+    const existEmailStudent = await this.studentModel.findOne().where({
+      email: data.email,
+    });
+
+    if (existEmailStudent)
+      throw new BadRequestException({ message: 'Email already used' });
+
     const student = new this.studentModel(data);
-    await student.save();
+    await student.save().catch(() => {
+      throw new BadRequestException({ message: 'Invalid student data' });
+    });
   }
 }
