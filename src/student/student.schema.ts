@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import * as mongoose from 'mongoose';
+import { Document } from 'mongoose';
 import { Clazz } from 'src/clazz/class.schema';
 
 export type StudentDocument = Student & Document;
@@ -16,13 +17,10 @@ export class Student {
   email: string;
 
   @Prop({ required: true })
-  yenumberar: string;
-
-  @Prop({ required: true })
   number: string;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Clazz', required: true })
   classId: Clazz;
 }
 
-export const ClassSchema = SchemaFactory.createForClass(Student);
+export const StudentSchema = SchemaFactory.createForClass(Student);
