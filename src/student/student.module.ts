@@ -5,7 +5,11 @@ import {
   GetAllStudentsController,
   DeleteStudentController,
 } from './controllers';
-import { CreateStudentService, GetAllStudentsService } from './services';
+import {
+  CreateStudentService,
+  GetAllStudentsService,
+  DeleteStudentService,
+} from './services';
 import { Student, StudentSchema } from './student.schema';
 
 @Module({
@@ -17,6 +21,10 @@ import { Student, StudentSchema } from './student.schema';
     GetAllStudentsController,
     DeleteStudentController,
   ],
-  providers: [CreateStudentService, GetAllStudentsService],
+  providers: [
+    CreateStudentService,
+    GetAllStudentsService,
+    DeleteStudentService,
+  ],
 })
 export class StudentModule {}
