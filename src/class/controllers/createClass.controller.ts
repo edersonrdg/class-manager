@@ -10,8 +10,8 @@ export class CreateClassController {
 
   @UsePipes(new ValidationPipe())
   @Post('/')
-  async handle(@Body() userData: CreateClassDTO): Promise<Class> {
-    const response = await this.createClassService.execute(userData);
+  async handle(@Body() classData: CreateClassDTO): Promise<Class> {
+    const response = await this.createClassService.execute(classData);
     return response;
   }
 }
