@@ -16,9 +16,9 @@ export class EditClassController {
   @UsePipes(new ValidationPipe())
   @Put(':id')
   async handle(
-    @Body() classData: EditClassDTO,
+    @Body() data: EditClassDTO,
     @Param('id') id: string,
   ): Promise<void> {
-    await this.editClassService.execute(classData, id);
+    await this.editClassService.execute(data, id);
   }
 }
