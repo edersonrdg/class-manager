@@ -4,7 +4,7 @@ import {
   CreateStudentController,
   GetAllStudentsController,
 } from './controllers';
-import { CreateStudentService } from './services';
+import { CreateStudentService, GetAllStudentsService } from './services';
 import { Student, StudentSchema } from './student.schema';
 
 @Module({
@@ -12,6 +12,6 @@ import { Student, StudentSchema } from './student.schema';
     MongooseModule.forFeature([{ name: Student.name, schema: StudentSchema }]),
   ],
   controllers: [CreateStudentController, GetAllStudentsController],
-  providers: [CreateStudentService],
+  providers: [CreateStudentService, GetAllStudentsService],
 })
 export class StudentModule {}
