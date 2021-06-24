@@ -1,4 +1,9 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Put } from '@nestjs/common';
 
-@Controller('edit-class')
-export class EditClassController {}
+@Controller('class')
+export class EditClassController {
+  @Put(':id')
+  async handle(@Body() userData: any): Promise<void> {
+    return;
+  }
+}
