@@ -9,7 +9,7 @@ export class Clazz {
   name: string;
 
   @Prop({ required: true })
-  year: number;
+  year: string;
 }
 
 export const ClassSchema = SchemaFactory.createForClass(Clazz);

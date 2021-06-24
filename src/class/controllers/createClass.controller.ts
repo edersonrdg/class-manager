@@ -1,4 +1,5 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UsePipes } from '@nestjs/common';
+import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { Class } from '../class.interface';
 import { CreateClassDTO } from '../dtos/createClassDTO';
 import { CreateClassService } from '../services';
@@ -7,6 +8,7 @@ import { CreateClassService } from '../services';
 export class CreateClassController {
   constructor(private readonly createClassService: CreateClassService) {}
 
+  @UsePipes(new ValidationPipe())
   @Post('/')
   async handle(@Body() userData: CreateClassDTO): Promise<Class> {
     const response = await this.createClassService.execute(userData);
