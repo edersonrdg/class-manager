@@ -11,6 +11,7 @@ import {
   CreateClassService,
   GetAllClassService,
   DeleteClassService,
+  EditClassService,
 } from './services';
 
 @Module({
@@ -23,6 +24,11 @@ import {
     DeleteClassController,
     EditClassController,
   ],
-  providers: [CreateClassService, GetAllClassService, DeleteClassService],
+  providers: [
+    CreateClassService,
+    GetAllClassService,
+    DeleteClassService,
+    EditClassService,
+  ],
 })
 export class ClassModule {}
