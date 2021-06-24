@@ -1,4 +1,11 @@
-import { Body, Controller, Param, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Param,
+  Put,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { EditClassDTO } from '../dtos/editClassDTO';
 import { EditClassService } from '../services';
 
@@ -6,6 +13,7 @@ import { EditClassService } from '../services';
 export class EditClassController {
   constructor(private readonly editClassService: EditClassService) {}
 
+  @UsePipes(new ValidationPipe())
   @Put(':id')
   async handle(
     @Body() classData: EditClassDTO,
