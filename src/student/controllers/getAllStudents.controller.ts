@@ -1,9 +1,10 @@
 import { Controller, Get } from '@nestjs/common';
+import { Student } from '../student.schema';
 
-@Controller('students')
+@Controller('student')
 export class GetAllStudentsController {
   @Get('/')
-  async handle(): Promise<void> {
-    return;
+  async handle(): Promise<Student[]> {
+    return [];
   }
 }
