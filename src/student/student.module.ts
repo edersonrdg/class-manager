@@ -4,6 +4,7 @@ import {
   CreateStudentController,
   GetAllStudentsController,
   DeleteStudentController,
+  EditStudentController,
 } from './controllers';
 import {
   CreateStudentService,
@@ -20,6 +21,7 @@ import { Student, StudentSchema } from './student.schema';
     CreateStudentController,
     GetAllStudentsController,
     DeleteStudentController,
+    EditStudentController,
   ],
   providers: [
     CreateStudentService,
