@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { CreateStudentDto } from '../dtos/createStudentDTO';
 
 @Injectable()
 export class CreateStudentService {
-  async execute(data: any): Promise<void> {
+  async execute(data: CreateStudentDto): Promise<void> {
     return;
   }
 }
