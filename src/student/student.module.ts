@@ -10,6 +10,7 @@ import {
   CreateStudentService,
   GetAllStudentsService,
   DeleteStudentService,
+  EditStudentService,
 } from './services';
 import { Student, StudentSchema } from './student.schema';
 
@@ -27,6 +28,7 @@ import { Student, StudentSchema } from './student.schema';
     CreateStudentService,
     GetAllStudentsService,
     DeleteStudentService,
+    EditStudentService,
   ],
 })
 export class StudentModule {}
