@@ -5,6 +5,7 @@ import {
   CreateClassController,
   GetAllClassController,
   DeleteClassController,
+  EditClassController,
 } from './controllers';
 import {
   CreateClassService,
@@ -20,6 +21,7 @@ import {
     CreateClassController,
     GetAllClassController,
     DeleteClassController,
+    EditClassController,
   ],
   providers: [CreateClassService, GetAllClassService, DeleteClassService],
 })
