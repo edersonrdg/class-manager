@@ -5,10 +5,10 @@ export type ClassDocument = Clazz & Document;
 
 @Schema()
 export class Clazz {
-  @Prop()
+  @Prop({ required: true })
   name: string;
 
-  @Prop()
+  @Prop({ required: true })
   year: number;
 }
 
