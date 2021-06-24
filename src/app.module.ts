@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ClassModule } from './class/class.module';
+import { ClassModule } from './clazz/class.module';
 import { StudentModule } from './student/student.module';
 
 @Module({
