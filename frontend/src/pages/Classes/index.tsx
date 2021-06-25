@@ -32,17 +32,19 @@ const Classes: React.FC = () => {
 
     const handleSubmit = async (data: FormData) => {
         setErrorMessage('');
-        const formatYear = data.year.substr(2, 2);
-        const res = await api
-            .post('/class', {
-                name: data.name,
-                year: formatYear,
-            })
+        await api
+            .post('/class', data)
             .then((response) => {
                 setClasses([...classes, response.data]);
             })
             .catch((err) => {
-                setErrorMessage('Já existe uma turma com esse nome');
+                if (err.response.data.message) {
+                    setErrorMessage(err.response.data.message);
+                } else {
+                    setErrorMessage(
+                        'Erro interno do servidor. Por favor, Tente mais tarde',
+                    );
+                }
             });
     };
 
@@ -99,10 +101,17 @@ const Classes: React.FC = () => {
                     <Input
                         name="name"
                         type="text"
-                        placeholder=" Nome da Turma"
+                        placeholder="Nome da Turma"
                         required
                     />
-                    <Input name="year" type="date" placeholder="ano" required />
+                    <Input
+                        name="year"
+                        type="number"
+                        min={0}
+                        max={99}
+                        placeholder="utimos 2 digitos do ano"
+                        required
+                    />
                     <button type="submit">Adicionar Turma</button>
                 </Form>
             </Container>
