@@ -7,8 +7,8 @@
 Aplicação utilizando conceitos de DDD, Solid e clean architecture.
 
 <p float="left">
-  <img src="https://i.ibb.co/gSPtnwC/class1.png" width="450" />
-  <img src="https://i.ibb.co/Rb35XPh/class2.png" width="425"/> 
+  <img src="https://i.ibb.co/gSPtnwC/class1.png" width="500" />
+  <img src="https://i.ibb.co/Rb35XPh/class2.png" width="500"/> 
 </p>
 
 ---
