@@ -61,9 +61,9 @@ export const StudentContainer = styled.div`
     display: flex;
     align-items: center;
     padding: 12px 60px;
-    color: #ffffff;
     background-color: #98cde0;
     cursor: pointer;
+    color: #ffffff;
 `;
 
 export const DeleteClassContainer = styled.div`

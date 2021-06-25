@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 
 import {
@@ -22,9 +23,11 @@ const Classes: React.FC = () => {
                             <h4>2019</h4>
                             <h4>30 Alunos</h4>
                         </CardContentContainer>
-                        <StudentContainer>
-                            <h4>Alunos</h4>
-                        </StudentContainer>
+                        <Link to="/students">
+                            <StudentContainer>
+                                <h4>Alunos</h4>
+                            </StudentContainer>
+                        </Link>
                         <DeleteClassContainer>
                             <h4>DEl</h4>
                         </DeleteClassContainer>
@@ -35,9 +38,11 @@ const Classes: React.FC = () => {
                             <h4>2019</h4>
                             <h4>30 Alunos</h4>
                         </CardContentContainer>
-                        <StudentContainer>
-                            <h4>Alunos</h4>
-                        </StudentContainer>
+                        <Link to="/students">
+                            <StudentContainer>
+                                <h4>Alunos</h4>
+                            </StudentContainer>
+                        </Link>
                         <DeleteClassContainer>
                             <h4>DEl</h4>
                         </DeleteClassContainer>
@@ -48,9 +53,11 @@ const Classes: React.FC = () => {
                             <h4>2019</h4>
                             <h4>30 Alunos</h4>
                         </CardContentContainer>
-                        <StudentContainer>
-                            <h4>Alunos</h4>
-                        </StudentContainer>
+                        <Link to="/students">
+                            <StudentContainer>
+                                <h4>Alunos</h4>
+                            </StudentContainer>
+                        </Link>
                         <DeleteClassContainer>
                             <h4>DEl</h4>
                         </DeleteClassContainer>
@@ -61,9 +68,11 @@ const Classes: React.FC = () => {
                             <h4>2019</h4>
                             <h4>30 Alunos</h4>
                         </CardContentContainer>
-                        <StudentContainer>
-                            <h4>Alunos</h4>
-                        </StudentContainer>
+                        <Link to="/students">
+                            <StudentContainer>
+                                <h4>Alunos</h4>
+                            </StudentContainer>
+                        </Link>
                         <DeleteClassContainer>
                             <h4>DEl</h4>
                         </DeleteClassContainer>
