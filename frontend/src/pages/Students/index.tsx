@@ -63,6 +63,15 @@ const Students: React.FC = () => {
         setClazz(currentClass);
     };
 
+    const handleDeleteStudent = async (id: string) => {
+        try {
+            await api.delete(`/student/${id}`);
+            setStudents(students.filter((std) => std._id !== id));
+        } catch (error) {
+            alert('Erro ao remover aluno');
+        }
+    };
+
     useEffect(() => {
         fetchClasses();
         fetchStudents();
@@ -83,7 +92,11 @@ const Students: React.FC = () => {
                                     </h4>
                                     <h4>{selected.email}</h4>
                                 </StudentCardContent>
-                                <DeleteStudentCard>
+                                <DeleteStudentCard
+                                    onClick={() =>
+                                        handleDeleteStudent(selected._id)
+                                    }
+                                >
                                     <h4>Del</h4>
                                 </DeleteStudentCard>
                             </StudentCard>
