@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Form } from '@unform/web';
 
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
+import Input from '../../components/Input';
 import { api } from '../../services/Api';
 
 import {
@@ -19,8 +21,22 @@ interface Clazz {
     year: string;
 }
 
+interface FormData {
+    name: string;
+    year: string;
+}
+
 const Classes: React.FC = () => {
     const [classes, setClasses] = useState<Clazz[]>([]);
+
+    const handleSubmit = async (data: FormData) => {
+        const formatYear = data.year.substr(2, 2);
+        const response = await api.post('/class', {
+            name: data.name,
+            year: formatYear,
+        });
+        setClasses([...classes, response.data]);
+    };
 
     const fetchClasses = async () => {
         const response = await api.get('/class');
@@ -57,12 +73,16 @@ const Classes: React.FC = () => {
                         <h2>Nenhuma turma cadastrada</h2>
                     )}
                 </Content>
-                <form>
-                    <input type="text" placeholder=" Nome da Turma" required />
-                    <input type="date" placeholder="ano" />
-
-                    <button type="button">Adicionar Turma</button>
-                </form>
+                <Form onSubmit={handleSubmit}>
+                    <Input
+                        name="name"
+                        type="text"
+                        placeholder=" Nome da Turma"
+                        required
+                    />
+                    <Input name="year" type="date" placeholder="ano" />
+                    <button type="submit">Adicionar Turma</button>
+                </Form>
             </Container>
         </>
     );
