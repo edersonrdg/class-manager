@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { Student, StudentSchema } from 'src/student/student.schema';
 import { ClassSchema, Clazz } from './class.schema';
 import {
   CreateClassController,
@@ -16,7 +17,10 @@ import {
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Clazz.name, schema: ClassSchema }]),
+    MongooseModule.forFeature([
+      { name: Clazz.name, schema: ClassSchema },
+      { name: Student.name, schema: StudentSchema },
+    ]),
   ],
   controllers: [
     CreateClassController,
