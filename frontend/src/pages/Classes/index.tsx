@@ -38,6 +38,15 @@ const Classes: React.FC = () => {
         setClasses([...classes, response.data]);
     };
 
+    const handleDeleteClass = async (id: string) => {
+        try {
+            await api.delete(`/class/${id}`);
+            setClasses(classes.filter((clazz) => clazz._id !== id));
+        } catch (error) {
+            alert('Erro ao deletar turma');
+        }
+    };
+
     const fetchClasses = async () => {
         const response = await api.get('/class');
         setClasses(response.data);
@@ -64,7 +73,11 @@ const Classes: React.FC = () => {
                                         <h4>Alunos</h4>
                                     </StudentContainer>
                                 </Link>
-                                <DeleteClassContainer>
+                                <DeleteClassContainer
+                                    onClick={() =>
+                                        handleDeleteClass(element._id)
+                                    }
+                                >
                                     <h4>DEl</h4>
                                 </DeleteClassContainer>
                             </ClassCard>
