@@ -10,13 +10,4 @@ export const Container = styled.div`
     h1 {
         font-size: 24px;
     }
-
-    button {
-        background-color: #4c4fef;
-        color: #ffffff;
-        font-size: 14px;
-        border: none;
-        border-radius: 6px;
-        padding: 10px 30px;
-    }
 `;
