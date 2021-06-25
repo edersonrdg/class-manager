@@ -1,0 +1,15 @@
+{
+  "name": "class-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/edersonrdg/class-manager.git",
+  "author": "Ederson rodrigo <edersonrodrigo31@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "install:back": "cd backend && npm install",
+    "install:front": "cd frontend && npm install",
+    "install:all": "npm run install:back && npm run install:front",
+    "start:back": "npm --prefix backend/ run start&",
+    "start:front": "npm --prefix frontend/ run start&"
+  }
+}
