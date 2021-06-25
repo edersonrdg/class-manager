@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+import { Form } from '@unform/web';
+
 import { useRouteMatch } from 'react-router-dom';
+import Input from '../../components/Input';
+
 import Header from '../../components/Header';
 import { api } from '../../services/Api';
 
@@ -36,6 +40,13 @@ const Students: React.FC = () => {
     const [students, setStudents] = useState<Student[]>([]);
     const { params } = useRouteMatch<StudentParams>();
 
+    const handleSubmit = async (data: any) => {
+        const sendData = Object.assign(data, { classId: params.class });
+        await api.post('/student', sendData).then(() => {
+            setStudents([...students, sendData]);
+        });
+    };
+
     const fetchStudents = async () => {
         const response = await api.get<Student[]>('/student');
         const getStudents = response.data.filter(
@@ -62,29 +73,53 @@ const Students: React.FC = () => {
             <Header>Alunos {clazz?.name}</Header>
             <Container>
                 <Content>
-                    {students.map((selected) => (
-                        <StudentCard key={selected._id}>
-                            <StudentCardContent>
-                                <h4>{selected.number}</h4>
-                                <h4>
-                                    {selected.firstName} {selected.lastName}
-                                </h4>
-                                <h4>{selected.email}</h4>
-                            </StudentCardContent>
-                            <DeleteStudentCard>
-                                <h4>Del</h4>
-                            </DeleteStudentCard>
-                        </StudentCard>
-                    ))}
+                    {students.length ? (
+                        students.map((selected) => (
+                            <StudentCard key={selected._id}>
+                                <StudentCardContent>
+                                    <h4>{selected.number}</h4>
+                                    <h4>
+                                        {selected.firstName} {selected.lastName}
+                                    </h4>
+                                    <h4>{selected.email}</h4>
+                                </StudentCardContent>
+                                <DeleteStudentCard>
+                                    <h4>Del</h4>
+                                </DeleteStudentCard>
+                            </StudentCard>
+                        ))
+                    ) : (
+                        <h1>Nenhum Aluno registrado</h1>
+                    )}
                 </Content>
-                <form>
-                    <input type="text" placeholder="Código do aluno" required />
-                    <input type="text" placeholder="Primeiro nome" required />
-                    <input type="text" placeholder="Ultimo nome" required />
-                    <input type="email" placeholder="Email" required />
+                <Form onSubmit={handleSubmit}>
+                    <Input
+                        name="number"
+                        type="text"
+                        placeholder="Código do aluno"
+                        required
+                    />
+                    <Input
+                        name="firstName"
+                        type="text"
+                        placeholder="Primeiro nome"
+                        required
+                    />
+                    <Input
+                        name="lastName"
+                        type="text"
+                        placeholder="Ultimo nome"
+                        required
+                    />
+                    <Input
+                        name="email"
+                        type="email"
+                        placeholder="Email"
+                        required
+                    />
 
-                    <button type="button">Adicionar Aluno</button>
-                </form>
+                    <button type="submit">Adicionar Aluno</button>
+                </Form>
             </Container>
         </>
     );
