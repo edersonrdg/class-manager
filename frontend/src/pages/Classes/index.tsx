@@ -1,7 +1,8 @@
 import React from 'react';
+import Header from '../../components/Header';
 
 const Classes: React.FC = () => {
-    return <h1>Turmas</h1>;
+    return <Header buttonText="Adicionar turma">Gestão de turmas</Header>;
 };
 
 export default Classes;
