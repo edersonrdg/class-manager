@@ -16,7 +16,7 @@ export class CreateClassService {
     });
 
     if (classNameExists)
-      throw new BadRequestException({ message: 'Class name already used' });
+      throw new BadRequestException({ message: 'Nome de turma já utilizado' });
 
     const response = new this.classModel(data);
     return await response.save();

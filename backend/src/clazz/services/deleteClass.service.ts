@@ -16,7 +16,7 @@ export class DeleteClassService {
       .findOneAndDelete()
       .where({ _id: id })
       .catch(() => {
-        throw new BadRequestException({ message: 'Invalid class id' });
+        throw new BadRequestException({ message: 'Erro interno de servidor' });
       });
 
     await this.studentModel
@@ -26,7 +26,7 @@ export class DeleteClassService {
       })
       .deleteMany()
       .catch(() => {
-        throw new BadRequestException({ message: 'no student find' });
+        throw new BadRequestException({ message: 'Erro interno de servidor' });
       });
   }
 }

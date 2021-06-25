@@ -15,11 +15,13 @@ export class CreateStudentService {
     });
 
     if (existEmailStudent)
-      throw new BadRequestException({ message: 'Email already used' });
+      throw new BadRequestException({
+        message: 'Já existe um aluno com esse email',
+      });
 
     const student = new this.studentModel(data);
     await student.save().catch(() => {
-      throw new BadRequestException({ message: 'Invalid student data' });
+      throw new BadRequestException({ message: 'Erro interno de servidor' });
     });
   }
 }
