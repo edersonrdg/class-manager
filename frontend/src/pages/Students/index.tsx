@@ -38,13 +38,26 @@ interface Student {
 const Students: React.FC = () => {
     const [clazz, setClazz] = useState<Clazz>();
     const [students, setStudents] = useState<Student[]>([]);
+    const [errorMessage, setErrorMessage] = useState('');
     const { params } = useRouteMatch<StudentParams>();
 
     const handleSubmit = async (data: any) => {
+        setErrorMessage('');
         const sendData = Object.assign(data, { classId: params.class });
-        await api.post('/student', sendData).then(() => {
-            setStudents([...students, sendData]);
-        });
+        await api
+            .post('/student', sendData)
+            .then(() => {
+                setStudents([...students, sendData]);
+            })
+            .catch((err) => {
+                if (err.response.data.message) {
+                    setErrorMessage(err.response.data.message);
+                } else {
+                    setErrorMessage(
+                        'Erro interno do servidor. Por favor, Tente mais tarde',
+                    );
+                }
+            });
     };
 
     const fetchStudents = async () => {
@@ -106,9 +119,12 @@ const Students: React.FC = () => {
                     )}
                 </Content>
                 <Form onSubmit={handleSubmit}>
+                    {errorMessage && <p>{errorMessage}</p>}
                     <Input
+                        min={0}
+                        max={999999}
                         name="number"
-                        type="text"
+                        type="number"
                         placeholder="Código do aluno"
                         required
                     />

@@ -11,6 +11,12 @@ export const Container = styled.div`
         background-color: #fff;
         border: #dbd8d8 1px solid;
 
+        p {
+            font-size: 14px;
+            margin-bottom: 14px;
+            color: #ff0000;
+        }
+
         input {
             background-color: #eeeeee;
             border: #c8c8c8 solid 1px;
