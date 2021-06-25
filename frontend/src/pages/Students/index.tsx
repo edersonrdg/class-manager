@@ -25,6 +25,56 @@ const Students: React.FC = () => {
                             <h4>Del</h4>
                         </DeleteStudentCard>
                     </StudentCard>
+                    <StudentCard>
+                        <StudentCardContent>
+                            <h4>123123</h4>
+                            <h4>Joao da silva</h4>
+                            <h4>Joao@gmail.com</h4>
+                        </StudentCardContent>
+                        <DeleteStudentCard>
+                            <h4>Del</h4>
+                        </DeleteStudentCard>
+                    </StudentCard>
+                    <StudentCard>
+                        <StudentCardContent>
+                            <h4>123123</h4>
+                            <h4>Joao da silva</h4>
+                            <h4>Joao@gmail.com</h4>
+                        </StudentCardContent>
+                        <DeleteStudentCard>
+                            <h4>Del</h4>
+                        </DeleteStudentCard>
+                    </StudentCard>
+                    <StudentCard>
+                        <StudentCardContent>
+                            <h4>123123</h4>
+                            <h4>Joao da silva</h4>
+                            <h4>Joao@gmail.com</h4>
+                        </StudentCardContent>
+                        <DeleteStudentCard>
+                            <h4>Del</h4>
+                        </DeleteStudentCard>
+                    </StudentCard>
+                    <StudentCard>
+                        <StudentCardContent>
+                            <h4>123123</h4>
+                            <h4>Joao da silva</h4>
+                            <h4>Joao@gmail.com</h4>
+                        </StudentCardContent>
+                        <DeleteStudentCard>
+                            <h4>Del</h4>
+                        </DeleteStudentCard>
+                    </StudentCard>
+                    <StudentCard>
+                        <StudentCardContent>
+                            <h4>123123</h4>
+                            <h4>Joao da silva</h4>
+                            <h4>Joao@gmail.com</h4>
+                        </StudentCardContent>
+                        <DeleteStudentCard>
+                            <h4>Del</h4>
+                        </DeleteStudentCard>
+                    </StudentCard>
                 </Content>
                 <form>
                     <input type="text" placeholder="Código do aluno" required />
