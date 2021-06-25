@@ -28,14 +28,22 @@ interface FormData {
 
 const Classes: React.FC = () => {
     const [classes, setClasses] = useState<Clazz[]>([]);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (data: FormData) => {
+        setErrorMessage('');
         const formatYear = data.year.substr(2, 2);
-        const response = await api.post('/class', {
-            name: data.name,
-            year: formatYear,
-        });
-        setClasses([...classes, response.data]);
+        const res = await api
+            .post('/class', {
+                name: data.name,
+                year: formatYear,
+            })
+            .then((response) => {
+                setClasses([...classes, response.data]);
+            })
+            .catch((err) => {
+                setErrorMessage('Já existe uma turma com esse nome');
+            });
     };
 
     const handleDeleteClass = async (id: string) => {
@@ -87,13 +95,14 @@ const Classes: React.FC = () => {
                     )}
                 </Content>
                 <Form onSubmit={handleSubmit}>
+                    {errorMessage && <p>{errorMessage}</p>}
                     <Input
                         name="name"
                         type="text"
                         placeholder=" Nome da Turma"
                         required
                     />
-                    <Input name="year" type="date" placeholder="ano" />
+                    <Input name="year" type="date" placeholder="ano" required />
                     <button type="submit">Adicionar Turma</button>
                 </Form>
             </Container>
