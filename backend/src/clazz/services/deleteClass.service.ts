@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Student, StudentDocument } from 'src/student/student.schema';
+import { Student, StudentDocument } from '../../student/student.schema';
 import { ClassDocument, Clazz } from '../class.schema';
 
 @Injectable()

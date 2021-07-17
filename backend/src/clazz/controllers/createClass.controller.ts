@@ -1,5 +1,5 @@
 import { Body, Controller, Post, UsePipes } from '@nestjs/common';
-import { ValidationPipe } from 'src/pipes/validation.pipe';
+import { ValidationPipe } from '../../pipes/validation.pipe';
 import { Class } from '../class.interface';
 import { CreateClassDTO } from '../dtos/createClassDTO';
 import { CreateClassService } from '../services';

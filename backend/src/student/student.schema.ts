@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
-import { Clazz } from 'src/clazz/class.schema';
+import { Clazz } from '../clazz/class.schema';
 
 export type StudentDocument = Student & Document;
 
