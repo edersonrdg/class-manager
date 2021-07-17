@@ -6,6 +6,7 @@ import { CreateClassController } from './createClass.controller';
 
 describe('CreateClassController', () => {
   let controller: CreateClassController;
+  let service: CreateClassService;
 
   class createClassServiceMock {
     async execute(data: CreateClassDTO): Promise<Class> {
@@ -25,6 +26,7 @@ describe('CreateClassController', () => {
       .compile();
 
     controller = module.get<CreateClassController>(CreateClassController);
+    service = module.get<CreateClassService>(CreateClassService);
   });
 
   it('should be defined', () => {
@@ -36,5 +38,13 @@ describe('CreateClassController', () => {
 
     const response = await controller.handle(request);
     expect(response).toEqual(Object.assign(request, { id: '123' }));
+  });
+  it('should calls service with valid data', async () => {
+    const serviceSpy = jest.spyOn(service, 'execute');
+    const request = { name: 'B', year: '22' };
+
+    await controller.handle(request);
+
+    expect(serviceSpy).toHaveBeenCalledWith(request);
   });
 });
