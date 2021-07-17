@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { EditClassDTO } from '../dtos/editClassDTO';
 import { EditClassService } from '../services';
 import { EditClassController } from './editClass.controller';
 
@@ -7,7 +8,7 @@ describe('EditClassController', () => {
   let service: EditClassService;
 
   class EditClassServiceMock {
-    async execute(): Promise<void> {
+    async execute(data: EditClassDTO): Promise<void> {
       return new Promise((resolve) => resolve());
     }
   }
@@ -27,5 +28,12 @@ describe('EditClassController', () => {
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
+  });
+  it('should calls service with valid data', async () => {
+    const spyService = jest.spyOn(service, 'execute');
+    const request = { name: 'A', year: '12' };
+
+    await controller.handle(request, '123');
+    expect(spyService).toHaveBeenCalledWith(request, '123');
   });
 });
