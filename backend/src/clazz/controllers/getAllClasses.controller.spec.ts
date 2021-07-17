@@ -28,4 +28,10 @@ describe('GetAllClassController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+  it('should calls service', async () => {
+    const serviceSpy = jest.spyOn(service, 'execute');
+
+    await controller.handle();
+    expect(serviceSpy).toHaveBeenCalled();
+  });
 });
