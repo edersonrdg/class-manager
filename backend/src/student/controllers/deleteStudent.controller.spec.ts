@@ -28,4 +28,11 @@ describe('DeleteStudentController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+  it('should calls service with valid data', async () => {
+    const serviceSpy = jest.spyOn(service, 'execute');
+
+    await controller.handle('123');
+
+    expect(serviceSpy).toHaveBeenCalledWith('123');
+  });
 });
