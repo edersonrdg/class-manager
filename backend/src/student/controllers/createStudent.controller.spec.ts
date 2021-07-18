@@ -44,4 +44,18 @@ describe('CreateStudentController', () => {
     const response = await controller.handle(request);
     expect(response).toBeUndefined();
   });
+  it('should calls service with valid data', async () => {
+    const serviceSpy = jest.spyOn(service, 'execute');
+    const request = {
+      firstName: 'name',
+      lastName: 'lastname',
+      email: 'email@email.com',
+      number: '123',
+      classId: '123',
+    };
+
+    await controller.handle(request);
+
+    expect(serviceSpy).toHaveBeenCalledWith(request);
+  });
 });
