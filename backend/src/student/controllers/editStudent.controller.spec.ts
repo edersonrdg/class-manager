@@ -29,4 +29,17 @@ describe('EditStudentController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+  it('should calls service with valid data', async () => {
+    const serviceSpy = jest.spyOn(service, 'execute');
+    const request = {
+      firstName: 'name',
+      lastName: 'lastname',
+      email: 'email@email.com',
+      number: '123',
+    };
+
+    await controller.handle(request, '123');
+
+    expect(serviceSpy).toHaveBeenCalledWith(request, '123');
+  });
 });
