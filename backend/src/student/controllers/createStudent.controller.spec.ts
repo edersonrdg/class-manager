@@ -32,4 +32,16 @@ describe('CreateStudentController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+  it('should return sucess if valid request is provided', async () => {
+    const request = {
+      firstName: 'name',
+      lastName: 'lastname',
+      email: 'email@email.com',
+      number: '123',
+      classId: '123',
+    };
+
+    const response = await controller.handle(request);
+    expect(response).toBeUndefined();
+  });
 });
